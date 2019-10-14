@@ -22,46 +22,13 @@ body {
 .red {
   color: red;
 }
-.green {
-  color: green;
-}
-.orange {
-  color: orange;
-}
-html,
-body,
-#app {
-  height: 100%;
-  overflow: hidden;
-}
-#app {
-  display: flex;
-  flex-direction: column;
-}
-.content {
-  h2 {
-    margin: 30px 0 0.8em;
-    padding-bottom: 0.7em;
-    border-bottom: 1px solid #ddd;
-  }
-  p {
-    &.tip {
-      border-left: 4px solid #409eff;
-      padding: 12px 24px 12px 30px;
-      margin: 2em 0;
-      background-color: #f8f8f8;
-    }
-  }
-}
 
 .page-header {
-  flex-shrink: 0;
+  max-width: 1400px;
   min-width: 1200px;
-  padding: 0 20px;
+  margin: 0 auto;
   box-sizing: border-box;
   border-bottom: 1px solid #dcdfe6;
-  box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.12);
-  display: flex;
   &:after {
     content: "";
     display: block;
@@ -76,39 +43,25 @@ body,
     border-radius: 50%;
   }
   .title {
-    margin-right: 10px;
-  }
-  .left {
     font-size: 22px;
-    padding: 5px 0;
+    padding: 10px 0;
     a {
       color: #409eff;
       text-decoration: none;
       cursor: pointer;
     }
+    float: left;
   }
   .right {
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
+    float: right;
     text-align: right;
-    & > .content {
-      width: 100%;
-      text-align: right;
-    }
+    margin: 5px 0;
   }
-  .performance {
-    margin-right: 15px;
+  .langs {
+    margin-bottom: 5px;
   }
-  .locale-switch,
   .version-switch {
-    margin-left: 10px;
-    margin-right: 15px;
-  }
-  .donation {
-    font-size: 15px;
-    font-weight: 700;
-    color: green;
+    margin-left: 20px;
   }
   .desc {
     font-size: 14px;
@@ -117,50 +70,38 @@ body,
 }
 .page-container {
   display: flex;
-  flex-grow: 1;
+  max-width: 1400px;
+  min-width: 1200px;
+  margin: 0 auto;
   border-bottom: 1px solid #dcdfe6;
-  overflow: hidden;
   > .aside {
-    width: 300px;
+    width: 220px;
     flex-shrink: 0;
     user-select: none;
-    padding: 15px 0 25px 20px;
+    padding: 15px 0 25px 0;
     border-right: 1px solid #dcdfe6;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden;
     .nav-menu {
+      font-size: 16px;
       color: #333;
       text-decoration: none;
-      font-size: 17px;
+      font-weight: 700;
       .nav-link {
-        display: block;
         height: 40px;
         line-height: 40px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        &.active {
-          font-weight: 700;
-        }
-      }
-      .expand {
-        .nav-link-icon {
-          transform: rotate(135deg);
-        }
-      }
-      .nav-link-icon {
-        margin-right: 5px;
-        transition: transform 0.2s ease-in-out;
       }
     }
     .nav-child-menu {
-      font-size: 15px;
+      font-size: 14px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
       font-weight: 400;
       > li {
-        padding-left: 22px;
+        padding-left: 15px;
       }
       .nav-link {
         display: block;
@@ -171,7 +112,7 @@ body,
           color: #409eff;
         }
         &.router-link-active {
-          font-weight: 700;
+          border-right: 3px solid #409eff;
         }
         &.disabled {
           color: #c0c4cc;
@@ -188,36 +129,27 @@ body,
   > .body {
     position: relative;
     flex-grow: 1;
-    overflow: auto;
-    padding: 15px 0 25px 0;
-    & > .content {
-      position: relative;
-      margin: 0 auto;
-      padding: 0 25px 0 25px;
-      &:not(.full) {
-        max-width: 1200px;
-        min-width: 800px;
-      }
-    }
-    .full {
-      .tosrc,
-      .todemo {
-        display: none;
-      }
+    overflow: hidden;
+    padding: 15px 0 25px 25px;
+    .tosrc {
+      position: absolute;
+      top: 15px;
+      right: 80px;
+      font-size: 16px;
     }
     .todemo {
       position: absolute;
-      top: -30px;
-      right: 120px;
-      font-size: 16px;
-    }
-    .tosrc {
-      position: absolute;
-      top: -30px;
-      right: 30px;
+      top: 15px;
+      right: 0;
       font-size: 16px;
     }
   }
+}
+.page-footer {
+  padding: 14px 0;
+  font-size: 12px;
+  color: #333;
+  text-align: center;
 }
 
 .btn {
@@ -236,16 +168,12 @@ body,
 
 .demo-code {
   cursor: pointer;
-  font-size: 15px;
   color: #409eff;
   font-weight: bold;
   text-align: center;
   user-select: none;
   &:before {
     content: ">> ";
-  }
-  &:hover {
-    text-decoration: underline;
   }
   &+pre {
     display: none;
@@ -262,20 +190,4 @@ body,
 .keyword-lighten {
   color: #000;
   background-color: #FFFF00;
-}
-
-.api-table {
-  .api-disabled {
-    color: #cb2431;
-  }
-  .disabled-line-through {
-    text-decoration: line-through;
-  }
-  .compatibility {
-    background-color: #1081C2;
-    border-radius: 10px;
-    padding: 2px 8px;
-    color: #fff;
-    font-size: 12px;
-  }
 }

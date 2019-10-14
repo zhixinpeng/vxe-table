@@ -17,6 +17,7 @@
           <select class="version-switch" v-model="version" @change="vChangeEvent">
             <option value="1">V1</option>
             <option value="2">V2</option>
+            <option value="3">V3</option>
           </select>
         </div>
         <div class="desc">{{ $t('app.header.desc') }}</div>
@@ -959,6 +960,10 @@ export default {
           break
         case '2':
           location.href = '/vxe-table'
+          break
+        case '3':
+          this.version = '2'
+          this.$XModal.message({ message: this.$t('app.body.other.newDevelopment'), status: 'info' })
           break
       }
     }
